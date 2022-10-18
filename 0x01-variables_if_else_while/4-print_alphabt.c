@@ -9,6 +9,7 @@
 int main(void)
 {
 	char alpha, e, q;
+
 	e = 'e';
 	q = 'q';
 
