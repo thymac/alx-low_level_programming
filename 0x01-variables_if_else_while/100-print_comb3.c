@@ -16,7 +16,7 @@ int main(void)
 		{
 			if (a != b)
 			{
-				putchat(a);
+				putchar(a);
 				putchar(b);
 
 				if (a == '8' && b == '9')
