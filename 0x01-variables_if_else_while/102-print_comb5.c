@@ -3,7 +3,7 @@
 #include <time.h>
 /**
  * main - Entry point
- * 
+ *
  * Return: Always 0 (Success)
  */
 int main(void)
@@ -19,7 +19,7 @@ int main(void)
 			putchar(' ');
 			putchar((b / 10) + '0');
 			putchar((b % 10) + '0');
-		
+
 			if (a == 98 && b == 99)
 				continue;
 
@@ -27,7 +27,6 @@ int main(void)
 			putchar(' ');
 		}
 	}
-
 	putchar('\n');	
 
 	return (0);
