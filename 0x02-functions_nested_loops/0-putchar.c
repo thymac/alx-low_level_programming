@@ -1,9 +1,10 @@
 #include <stdio.h>
-#include "_putchar.h"
+#include "main.h"
 /**
- * main - Entry point
+ * main - Check description
+ * Description: It prints the word _putchar, followed by a newline.
  *
- * Result: Always 0 (Success)
+ * Result: 0.
  */
 int main(void)
 {
