@@ -10,14 +10,14 @@ int _isalpha(int n)
 	char lower, upper;
 	int isletter = 0;
 
-	for (for lower = 'a'; lower <= 'z'; lower++)
+	for (lower = 'a'; lower <= 'z'; lower++)
 	{
 		for (upper = 'A'; upper <= 'Z'; upper++)
 		{
 			if (n == lower || n == upper)
 				isletter = 1;
 		}
-	}
+i	}
 
 	return (isletter);
 }
