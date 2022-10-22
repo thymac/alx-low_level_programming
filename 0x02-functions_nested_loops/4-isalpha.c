@@ -1,18 +1,23 @@
 #include "main.h"
 /**
  * _isalpha - Checks if uppercase
+ * @n: An input number
  *
- * Return: 1 if uppercase and 0 if lowercase
+ * Return: 1 if uppercase or 0 if lowercase
  */
-int _isalpha(int c)
+int _isalpha(int n)
 {
-	char i;
-	int alpha = 0;
+	char lower, upper;
+	int isletter = 0;
 
-	for (i = 'A'; i <= 'Z'; i++)
+	for (for lower = 'a'; lower <= 'z'; lower++)
 	{
-		if (i == c)
-			alpha = 1;
+		for (upper = 'A'; upper <= 'Z'; upper++)
+		{
+			if (n == lower || n == upper)
+				isletter = 1;
+		}
 	}
-	return (alpha);
+
+	return (isletter);
 }
