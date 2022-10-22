@@ -4,7 +4,7 @@
  *
  * Return: Nothing.
  */
-int main (void)
+int main(void)
 {
 	print_alphabet();
 	return (0);
