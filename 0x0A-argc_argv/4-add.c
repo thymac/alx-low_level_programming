@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 			if (!(isdigit(argv[argc][i])))
 			{
 				printf("Error\n");
-				return 1;
+				return (1);
 			}
 		}
 		num = atoi(argv[argc]);
