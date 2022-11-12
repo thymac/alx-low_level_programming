@@ -1,16 +1,14 @@
-#include <stdio.h>
-
-int _putchar(char c);
+#include "main.h"
 /**
- * _puts - a finction that prints a string, followed by a
- * newline, to stdout
- * @str: an input string
+ * _puts - a function that prints a string, followed by
+ * a new line, to stdout.
+ * @str: An input string
  *
  * Return: Always 0 (Success)
  */
 void _puts(char *str)
 {
-	int i;
+	int i = 0;
 
 	while (str[i] != '\0')
 	{
