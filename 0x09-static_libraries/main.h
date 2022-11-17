@@ -1,6 +1,13 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <time.h>
+#include <ctype.h>
+#include <stddef.h>
+
 int _putchar(char c);
 int _islower(int c);
 int _isalpha(int c);
