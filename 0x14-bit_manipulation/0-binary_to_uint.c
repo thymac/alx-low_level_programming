@@ -21,8 +21,8 @@ unsigned int binary_to_uint(const char *b)
 		if (b[len - 1] != '0' && b[len - 1] != '1')
 			return (0);
 
-	if (b[len - 1] == '1')
-		result += base;
+		if (b[len - 1] == '1')
+			result += base;
 		base *= 2;
 		len--;
 	}
