@@ -1,48 +1,105 @@
 #include "main.h"
-/**
- * strtow - A function that splits a string into words
- * @str: An input pointer of the string to split
- * Return: Apointer to concatened strings or NULL if it str is NULL
- */
-char **strtow(char *str)
-{
-	char **array;
-	int i = 0, j, m, k = 0, len = 0, count = 0;
 
-	if (str == NULL || *str == '\0')
-		return (NULL);
-	for (; str[i]; i++)
+/**
+ * wordcount - function that counts words delimited by space
+ * @str: Char pointer for text blob to check
+ * Return: Number of words in text blob with space as a
+ * delimiter
+ */
+
+int wordcount(char *str)
+{
+	int i, wc = 0;
+
+	for (i = 0; str[i]; i++)
 	{
-		if ((str[i] != ' ' || *str != '\t') &&
-				((str[i + 1] == ' ' || str[i + 1] == '\t') || str[i + 1] == '\n'))
-			count++;
-	}
-	if (count == 0)
-		return (NULL);
-	array = malloc(sizeof(char *) * (count + 1));
-	if (array == NULL)
-		return (NULL);
-	for (i = 0; str[i] != '\0' && k < count; i++)
-	{
-		if (str[i] != ' ' || str[i] != '\t')
+		if (str[i] != ' ')
 		{
-			len = 0;
-			j = i;
-			while ((str[j] != ' ' || str[j] != '\t') && str[j] != '\0')
-				j++, len++;
-			array[k] = malloc((len + 1) * sizeof(char));
-			if (array[k] == NULL)
-			{
-				for (k = k - 1; k >= 0; k++)
-					free(array[k]);
-				free(array);
-				return (NULL);
-			}
-			for (m = 0; m < len; m++, i++)
-				array[k][m] = str[i];
-			array[k++][m] = '\0';
+			wc++;
+
+			for (; str[i + 1] != ' ' && str[i + 1] != '\0'; i++)
+				;
 		}
 	}
-	array[k] = NULL;
-	return (array);
+	return (wc);
+}
+
+/**
+ * word_len - function that counts word length delimted by space
+ * @str: Char pointer for word to check
+ * Return: Length of word
+ */
+
+int word_len(char *str)
+{
+	int i, wl = 0;
+
+	for (i = 0; str[i] && str[i] != ' '; i++)
+		++wl;
+
+	return (wl);
+}
+
+/**
+ * free_grid - function that frees a 2 dimensional grid of char pointers
+ * @grid: char double pointer to be freed
+ * @height: int for height of 2D array to be passed
+ * Return: void
+ */
+
+void free_grid(char **grid, int height)
+{
+	int k;
+
+	for (k = 0; k <= height; k++)
+		free(grid[k]);
+
+	free(grid);
+}
+
+/**
+ * strtow - function that splits a string into words
+ * @str: Char double pointer for string to examine
+ * Return: Char double pointer of  an array of strings (words)
+ */
+
+char **strtow(char *str)
+{
+	int i, j = 0, k, wc, wl;
+	char **s = NULL;
+
+	wc = wordcount(str);
+
+	s = malloc((sizeof(char *) * wc) + 1);
+
+	if (s == NULL || wc == 0)
+		return (NULL);
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] != ' ')
+		{
+			wl = (word_len(str + i));
+			s[j] = malloc((wl + 1) * sizeof(char));
+
+			if (s[j] == NULL)
+			{
+				free_grid(s, j);
+				return (NULL);
+			}
+
+			for (k = 0; k < wl; i++, k++)
+				s[j][k] = str[i];
+
+			s[j][k] = '\0';
+
+			if (j == wc)
+				break;
+
+			j++;
+		}
+	}
+
+	s[j] = '\0';
+	return (s);
 }
