@@ -1,32 +1,33 @@
 #!/usr/bin/python3
-"""
-Island Perimeter
-"""
 
 def island_perimeter(grid):
-    """returns the perimeter of the island described in grid
+    """
+    Compute the perimeter of the island in the given grid.
 
     Args:
-        grid(matrix): input grid
+    - grid: a list of list of integers representing the grid of the island
 
-    Description:
-        Traverse the land mass, and
-        for the lake's nearest neighbor
-        then return the total length
-
+    Returns:
+    - the perimeter of the island
     """
-    y = 0
-    x = 0
-    
-    for row in range(1, len(grid) - 1):
-            for col in range(1, len(grid[row]) - 1):
-                if grid[row][col] == 1:
-                    if grid[row][col - 1] == 0:
-                        y += 1
-                    if grid[row][col + 1] == 0:
-                        y += 1
-                    if grid[row - 1][col] == 0:
-                        x += 1
-                    if grid[row + 1][col] == 0:
-                        x += 1
-    return x + y
+    rows = len(grid)
+    cols = len(grid[0])
+    perimeter = 0
+
+    for i in range(rows):
+        for j in range(cols):
+            if grid[i][j] == 1:
+                # Check if the cell to the left is water or out of bounds
+                if j == 0 or grid[i][j-1] == 0:
+                    perimeter += 1
+                # Check if the cell to the right is water or out of bounds
+                if j == cols-1 or grid[i][j+1] == 0:
+                    perimeter += 1
+                # Check if the cell above is water or out of bounds
+                if i == 0 or grid[i-1][j] == 0:
+                    perimeter += 1
+                # Check if the cell below is water or out of bounds
+                if i == rows-1 or grid[i+1][j] == 0:
+                    perimeter += 1
+
+    return perimeter
