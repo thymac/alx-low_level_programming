@@ -1,33 +1,42 @@
 #!/usr/bin/python3
+"""
+Defines the function island_perimeter(grid)
+"""
 
 def island_perimeter(grid):
     """
-    Compute the perimeter of the island in the given grid.
+    Computes the perimeter of the island described in grid.
 
     Args:
-    - grid: a list of list of integers representing the grid of the island
+        grid (List[List[int]]): A list of lists of integers, where 0 represents water
+                                and 1 represents land. Grid cells are connected horizontally/
+                                vertically (not diagonally). Grid is rectangular, with width
+                                and height not exceeding 100. Grid is completely surrounded
+                                by water, and there is one island (or nothing). The island
+                                doesn’t have “lakes” (water inside that isn’t connected to the
+                                water around the island).
 
     Returns:
-    - the perimeter of the island
+        int: The perimeter of the island.
+
     """
-    rows = len(grid)
-    cols = len(grid[0])
     perimeter = 0
-
-    for i in range(rows):
-        for j in range(cols):
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
             if grid[i][j] == 1:
-                # Check if the cell to the left is water or out of bounds
-                if j == 0 or grid[i][j-1] == 0:
-                    perimeter += 1
-                # Check if the cell to the right is water or out of bounds
-                if j == cols-1 or grid[i][j+1] == 0:
-                    perimeter += 1
-                # Check if the cell above is water or out of bounds
-                if i == 0 or grid[i-1][j] == 0:
-                    perimeter += 1
-                # Check if the cell below is water or out of bounds
-                if i == rows-1 or grid[i+1][j] == 0:
-                    perimeter += 1
-
+                # Count the number of neighbors that are water
+                water_neighbors = 0
+                if i > 0 and grid[i-1][j] == 0:  # Check top neighbor
+                    water_neighbors += 1
+                if j > 0 and grid[i][j-1] == 0:  # Check left neighbor
+                    water_neighbors += 1
+                if i < len(grid)-1 and grid[i+1][j] == 0:  # Check bottom neighbor
+                    water_neighbors += 1
+                if j < len(grid[i])-1 and grid[i][j+1] == 0:  # Check right neighbor
+                    water_neighbors += 1
+                
+                # Update the perimeter accordingly
+                perimeter += 4 - water_neighbors
+    
     return perimeter
+
