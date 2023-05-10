@@ -30,11 +30,11 @@ int exponential_search(int *array, size_t size, int value)
 	max = (bound < size - 1) ? bound : size - 1;
 	printf("Value found between indexes [%lu] and [%lu]\n", min, max);
 
-	return (binary_search(array, min, max, value));
+	return (binary_search_b(array, min, max, value));
 }
 
 /**
- * binary_search - Searches for a value in a sorted array using binary search
+ * binary_search_b - Searches for a value in a sorted array using binary search
  * @array: Pointer to the first element of the array to search in
  * @min: Minimum index to search in
  * @max: Maximum index to search in
@@ -42,7 +42,7 @@ int exponential_search(int *array, size_t size, int value)
  *
  * Return: Index where value is located, or -1 if not found
  */
-int binary_search(int *array, size_t min, size_t max, int value)
+int binary_search_b(int *array, size_t min, size_t max, int value)
 {
 	size_t mid;
 

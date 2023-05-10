@@ -44,9 +44,10 @@ int binary_search(int *array, size_t size, int value);
 void print_subarray(int *array, size_t left, size_t right);
 int jump_search(int *array, size_t size, int value);
 int interpolation_search(int *array, size_t size, int value);
-int binary_search(int *array, size_t min, size_t max, int value);
+int binary_search_b(int *array, size_t min, size_t max, int value);
 void print_array(int *array, size_t start, size_t end);
 void print_array(int *array, size_t left, size_t right);
+int exponential_search(int *array, size_t size, int value);
 int advanced_binary_recursive(int *array, size_t left,
 size_t right, int value);
 int advanced_binary(int *array, size_t size, int value);
